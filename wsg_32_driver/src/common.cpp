@@ -188,8 +188,10 @@ const char * getStateValues( unsigned char *b ){
 	dbgPrint("b[4] = 0x%x\n", b[4]);
 	dbgPrint("b[5] = 0x%x\n", b[5]);
 	*/
-
-	char resp[1024] = "| ";
+	//char resp[1024] = "| ";
+    char* resp = (char*)malloc(1024);
+    resp[0] = 0;
+	strcat(resp, "| ");
 
 	if (b[2] & 0x1){	// D0 ==> LSB
 		//dbgPrint("Fingers Referenced.\n");

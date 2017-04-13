@@ -108,7 +108,7 @@ bool moveSrv(wsg_32_common::Move::Request &req, wsg_32_common::Move::Response &r
 	if ( (req.width >= 0.0 && req.width <= GRIPPER_MAX_OPEN) && (req.speed > 0.0 && req.speed <= 420.0) ){
   		ROS_INFO("Moving to %f position at %f mm/s.", req.width, req.speed);
 		res.error = move(req.width, req.speed, false);
-	}else if (req.width < 0.0 || req.width > 110.0){
+	}else if (req.width < 0.0 || req.width > GRIPPER_MAX_OPEN){
 		ROS_ERROR("Imposible to move to this position. (Width values: [0.0 - 110.0] ");
 		res.error = 255;
 		return false;
@@ -327,7 +327,7 @@ void timer_cb(const ros::TimerEvent& ev)
 	joint_states.name.push_back("wsg_32_gripper_base_joint_gripper_right");
 		joint_states.position.resize(2);
 
-	joint_states.position[0] = -info.position/2000.0;
+	joint_states.position[0] = info.position/2000.0;
 	joint_states.position[1] = info.position/2000.0;
 	joint_states.velocity.resize(2);		
     joint_states.velocity[0] = info.speed/1000.0;
