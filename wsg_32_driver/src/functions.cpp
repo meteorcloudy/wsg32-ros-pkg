@@ -368,7 +368,7 @@ int script_measure_move (unsigned char cmd_type, float cmd_width, float cmd_spee
 		unsigned char resp_state[6] = {0,0,0,0,0,0};
 		resp_state[2] = resp[2];
 		info.state = resp[2];					 off+=1;
-		char *tmp = getStateValues(resp_state);
+		char *tmp = (char*)getStateValues(resp_state);
 		info.state_text = std::string(tmp);
 		free(tmp);
 		info.position = convert(&resp[off]);     off+=4;

@@ -266,7 +266,7 @@ void timer_cb(const ros::TimerEvent& ev)
 	info.speed = 0.0;
 
     if (g_mode_polling) {
-        const char * state = systemState();
+        char * state = (char*)systemState();
         if (!state)
             return;
         info.state_text = std::string(state);
