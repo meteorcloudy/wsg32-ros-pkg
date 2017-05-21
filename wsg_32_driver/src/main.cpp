@@ -270,6 +270,7 @@ void timer_cb(const ros::TimerEvent& ev)
         if (!state)
             return;
         info.state_text = std::string(state);
+	    free(state);
 		info.position = getOpening();
 		acc = getAcceleration();
 		info.f_motor = getForce();//getGraspingForce();
